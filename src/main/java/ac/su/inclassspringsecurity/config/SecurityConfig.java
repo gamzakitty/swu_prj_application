@@ -26,14 +26,12 @@ public class SecurityConfig {
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-    .authorizeHttpRequests(
-        (authorizeHttpRequests) ->
-            authorizeHttpRequests
-                .requestMatchers("/users/login", "/csrf-token", "/products-temp/**").permitAll()
-                .requestMatchers("/products-temp/**").hasAnyRole("SUPER_ADMIN", "ADMIN")
-                .anyRequest().authenticated()
-    )
+       http
+            .authorizeHttpRequests(
+                (authorizeHttpRequests) ->
+                    authorizeHttpRequests
+                        .requestMatchers("/**").permitAll()  // 모든 경로에 대해 접근 허용
+            )
 
 //            .csrf(csrf -> csrf
 //                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
