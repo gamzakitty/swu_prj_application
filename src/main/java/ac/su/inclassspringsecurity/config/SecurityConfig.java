@@ -4,7 +4,6 @@ import ac.su.inclassspringsecurity.config.jwt.TokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -26,9 +25,9 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .authorizeRequests(authorizeRequests ->
+            .authorizeHttpRequests(authorizeRequests ->
                 authorizeRequests
-                    .antMatchers("/public/**").permitAll() // /public 경로는 인증 없이 접근 가능
+                    .requestMatchers("/public/**").permitAll() // /public 경로는 인증 없이 접근 가능
                     .anyRequest().authenticated() // 그 외의 모든 경로는 인증 필요
             )
             .formLogin(formLogin ->
