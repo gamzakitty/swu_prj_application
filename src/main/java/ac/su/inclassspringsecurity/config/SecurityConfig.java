@@ -27,10 +27,16 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
        http
-            .authorizeHttpRequests(
-                (authorizeHttpRequests) ->
-                    authorizeHttpRequests
-                        .requestMatchers("/**").permitAll()  // 모든 경로에 대해 접근 허용
+            .authorizeRequests()
+                .antMatchers("/public/**").permitAll() // /public 경로는 인증 없이 접근 가능
+                .anyRequest().authenticated() // 그 외의 모든 경로는 인증 필요
+                .and()
+            .formLogin()
+                .loginPage("/login")
+                .permitAll()
+                .and()
+            .logout()
+                .permitAll();
             )
 
 //            .csrf(csrf -> csrf
