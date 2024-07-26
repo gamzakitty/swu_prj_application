@@ -4,7 +4,7 @@
 SUBJECT="Daily Resource Usage Log"
 TO="1015hae@naver.com"
 FROM="swuswu_pj2@example.com"
-LOG_FILE="/var/log/resource_usage.log.1.gz" // 경로 변경 필요
+LOG_FILE="/home/ubuntu/log_test/oldlog/resource_usage.log.1.gz"
 BODY="Please find the attached log file for resource usage."
 
 # 압축된 로그 파일을 이메일로 전송
