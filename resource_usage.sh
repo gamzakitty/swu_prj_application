@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 로그 파일 위치 설정( /var/log/파일명 이 기본 경로이나, 혹시 권한문제 발생시 우회)
-LOG_FILE="/home/ubuntu/log_test/resource_usage.log"
+LOG_FILE="/home/ubuntu/log_test/oldlog/resource_usage.log.1"
 
 # 현재 시간 가져오기
 CURRENT_TIME=$(date "+%Y-%m-%d %H:%M:%S")
