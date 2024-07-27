@@ -3,7 +3,7 @@
 # 이메일 설정
 SUBJECT="Daily Resource Usage Log"
 TO="1015hae@naver.com"
-FROM="swuswu_pj2@example.com"
+FROM="929kong@gmail.com"
 LOG_FILE="/home/ubuntu/log_test/oldlog/resource_usage.log.2.gz"
 BODY="Please find the attached log file for resource usage."
 
