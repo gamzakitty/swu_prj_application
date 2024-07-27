@@ -30,7 +30,7 @@ TMPFILE=$(mktemp /tmp/email.XXXXXX)
 } > "$TMPFILE"
 
 # 이메일 전송
-msmtp --file=~/.msmtprc --from="$FROM" -t < "$TMPFILE"
+msmtp --file=/var/lib/jenkins/.msmtprc --from="$FROM" -t < "$TMPFILE"
 
 # 임시 파일 삭제
 rm "$TMPFILE"
