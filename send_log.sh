@@ -9,15 +9,28 @@ BODY="Please find the attached log file for resource usage."
 
 # 이메일 내용 및 첨부파일을 위한 임시 파일 생성
 TMPFILE=$(mktemp /tmp/email.XXXXXX)
-echo "Subject: $SUBJECT" >> $TMPFILE
-echo "To: $TO" >> $TMPFILE
-echo "From: $FROM" >> $TMPFILE
-echo "" >> $TMPFILE
-echo "$BODY" >> $TMPFILE
-uuencode "$LOG_FILE" $(basename "$LOG_FILE") >> $TMPFILE
+{
+    echo "Subject: $SUBJECT"
+    echo "To: $TO"
+    echo "From: $FROM"
+    echo "Content-Type: multipart/mixed; boundary=\"----=_Part_$(date +%s)\""
+    echo ""
+    echo "------=_Part_$(date +%s)"
+    echo "Content-Type: text/plain"
+    echo ""
+    echo "$BODY"
+    echo ""
+    echo "------=_Part_$(date +%s)"
+    echo "Content-Type: application/gzip"
+    echo "Content-Disposition: attachment; filename=$(basename "$LOG_FILE")"
+    echo ""
+    cat "$LOG_FILE"
+    echo ""
+    echo "------=_Part_$(date +%s)--"
+} > "$TMPFILE"
 
 # 이메일 전송
-cat $TMPFILE | msmtp --read-envelope-from --auto-from "$TO"
+msmtp --from="$FROM" -t < "$TMPFILE"
 
 # 임시 파일 삭제
-rm $TMPFILE
+rm "$TMPFILE"
