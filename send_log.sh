@@ -4,7 +4,7 @@
 SUBJECT="Daily Resource Usage Log"
 TO="1015hae@naver.com"
 FROM="929kong@gmail.com"
-LOG_FILE="/home/ubuntu/log_test/oldlog/resource_usage.log.1"
+LOG_FILE="/var/lib/jenkins/logs/resource_usage.log.1"
 BODY="Please find the attached log file for resource usage."
 
 # 이메일 내용 및 첨부파일을 위한 임시 파일 생성
@@ -17,7 +17,7 @@ echo "Checking LOG_FILE permissions:"
 ls -l "$LOG_FILE"
 
 echo "Checking msmtp configuration file permissions:"
-ls -l /home/ubuntu/.msmtprc
+ls -l /var/lib/jenkins/msmtp/.msmtprc
 
 {
     echo "Subject: $SUBJECT"
@@ -40,7 +40,7 @@ ls -l /home/ubuntu/.msmtprc
 } > "$TMPFILE"
 
 # 이메일 전송
-msmtp --file=/home/ubuntu/.msmtprc --from="$FROM" -t < "$TMPFILE"
+msmtp --file=/var/lib/jenkins/msmtp/.msmtprc --from="$FROM" -t < "$TMPFILE"
 
 # 임시 파일 삭제
 rm "$TMPFILE"
