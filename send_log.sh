@@ -18,6 +18,8 @@ ls -l "$LOG_FILE"
 
 echo "Checking whoami:"
 whoami
+echo "Checking hostname:"
+hostname
 echo "Checking msmtp configuration file permissions:"
 ls -l /var/lib/jenkins/msmtp/.msmtprc
 
