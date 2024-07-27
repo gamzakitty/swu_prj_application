@@ -7,7 +7,7 @@ FROM="929kong@gmail.com"
 LOG_FILE="/var/lib/jenkins/logs/resource_usage.log.1"
 BODY="Please find the attached log file for resource usage."
 
-# 이메일 내용 및 첨부파일을 위한 임시 파일 생성
+# 이메일 내용 및 첨부파일을 위한 임시 파일 
 TMPFILE=$(mktemp /tmp/email.XXXXXX)
 
 # 디버깅 로그 추가
