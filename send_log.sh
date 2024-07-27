@@ -42,7 +42,7 @@ ls -l /var/lib/jenkins/msmtp/.msmtprc
 } > "$TMPFILE"
 
 # 이메일 전송
-sudo -E msmtp --file=/var/lib/jenkins/msmtp/.msmtprc --from="$FROM" -t < "$TMPFILE"
+sudo msmtp --file=/var/lib/jenkins/msmtp/.msmtprc --from="$FROM" -t < "$TMPFILE"
 
 # 임시 파일 삭제
 rm "$TMPFILE"
