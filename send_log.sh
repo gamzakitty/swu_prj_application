@@ -17,7 +17,7 @@ echo "Checking LOG_FILE permissions:"
 ls -l "$LOG_FILE"
 
 echo "Checking msmtp configuration file permissions:"
-ls -l /var/lib/jenkins/.msmtprc
+ls -l /home/ubuntu/.msmtprc
 
 {
     echo "Subject: $SUBJECT"
@@ -40,7 +40,7 @@ ls -l /var/lib/jenkins/.msmtprc
 } > "$TMPFILE"
 
 # 이메일 전송
-msmtp --file=/var/lib/jenkins/.msmtprc --from="$FROM" -t < "$TMPFILE"
+msmtp --file=/home/ubuntu/.msmtprc --from="$FROM" -t < "$TMPFILE"
 
 # 임시 파일 삭제
 rm "$TMPFILE"
