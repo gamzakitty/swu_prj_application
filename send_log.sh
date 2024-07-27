@@ -4,7 +4,7 @@
 SUBJECT="Daily Resource Usage Log"
 TO="1015hae@naver.com"
 FROM="929kong@gmail.com"
-LOG_FILE="/home/ubuntu/oldlog/log.txt.1.gz"
+LOG_FILE="/var/lib/jenkins/log.txt.1.gz"
 BODY="Please find the attached log file for resource usage."
 
 # 이메일 내용 및 첨부파일을 위한 임시 파일 생성
